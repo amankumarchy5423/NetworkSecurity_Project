@@ -4,4 +4,9 @@ numpy
 mlflow
 scikit-learn
 yml
+pymongo
+
+
+-e .
+
 
