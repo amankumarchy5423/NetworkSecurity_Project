@@ -1,0 +1,7 @@
+python-dotenv
+pandas
+numpy
+mlflow
+scikit-learn
+yml
+
