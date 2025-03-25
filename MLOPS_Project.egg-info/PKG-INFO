@@ -1,0 +1,16 @@
+Metadata-Version: 2.4
+Name: MLOPS_Project
+Version: 1.0.0
+Author: Aman Kumar Choudhary
+Author-email: amankumarchy5423@gmail.com
+Requires-Dist: python-dotenv
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: mlflow
+Requires-Dist: scikit-learn
+Requires-Dist: yml
+Requires-Dist: pymongo
+Requires-Dist: pymongo[srv]
+Dynamic: author
+Dynamic: author-email
+Dynamic: requires-dist

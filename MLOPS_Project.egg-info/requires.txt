@@ -6,8 +6,3 @@ scikit-learn
 yml
 pymongo
 pymongo[srv]
-
-
--e .
-
-
