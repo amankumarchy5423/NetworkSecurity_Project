@@ -8,19 +8,22 @@ import os
 
 class Train_pipeline_config :
     def __init__(self,timestamp = datetime.now()):
-        self.timestamp = timestamp.strftime('%d_%m_%y_%H_%M_%S')
+        self.timestamp = f"{timestamp.strftime('%d_%m_%y_%H_%M_%S')}"
         self.data_dir = training_pipeline.ARTIFACT_DIR
         self.training_pipe = training_pipeline.PIPELINE_NAME
-        self.artifact_dir = os.path.join(self.data_dir,timestamp)
-        self.timestamp : str = timestamp
+        self.artifact_dir = os.path.join(self.data_dir,self.timestamp)
+        self.timestamp : str = self.timestamp
 
-class Data_ingustion_config:
+class Data_ingustion_config():
     def __init__(self,config:Train_pipeline_config):
         self.data_ingestion_dir = os.path.join(
             config.data_dir,training_pipeline.DATA_INGESTION_DIR_NAME
         )
-        self.feature_store_dir = os.path.join(
+        self.feature_store_file = os.path.join(
             training_pipeline.DATA_INGESTION_DIR_NAME , training_pipeline.DATA_INGESTION_FEATURE_STORE_DIR,training_pipeline.FILE_NAME
+        )
+        self.feature_store_dir = os.path.join(
+            training_pipeline.DATA_INGESTION_DIR_NAME , training_pipeline.DATA_INGESTION_FEATURE_STORE_DIR
         )
         self.data_training = os.path.join(
             training_pipeline.DATA_INGESTION_DIR_NAME,training_pipeline.DATA_INGESTION_DIR_NAME,training_pipeline.TRAINING_FILE_NAME
