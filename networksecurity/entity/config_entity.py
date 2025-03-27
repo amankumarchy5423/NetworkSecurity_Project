@@ -36,3 +36,44 @@ class Data_ingustion_config():
         self.mongo_database_name = training_pipeline.DATA_INGESTION_DATABASE_NAME
 
 
+class Data_validation_config:
+    def __init__(self,config : Train_pipeline_config):
+        self.data_validation_config = config
+        self.data_validation_dir : str = os.path.join(self.data_validation_config.artifact_dir , training_pipeline.DATA_VALIDATION_DIRNAME)
+
+        self.valid_data_dir : str = os.path.join(
+            self.data_validation_dir,
+            training_pipeline.DATA_VALIDATION_VALID_DIR
+        )
+        self.invalid_data_dir : str = os.path.join(
+            self.data_validation_dir,
+            training_pipeline.DATA_VALIDATION_INVALID_DIR
+        )
+        self.data_valid_testfile_path : str = os.path.join(
+            self.valid_data_dir ,
+            training_pipeline.DATA_VALIDATION_VALID_DIR,
+            training_pipeline.TESTING_FILE_NAME
+        )
+        self.data_invalid_testfile_path : str = os.path.join(
+            self.valid_data_dir ,
+            training_pipeline.DATA_VALIDATION_INVALID_DIR,
+            training_pipeline.TESTING_FILE_NAME
+        )
+        self.data_invalid_trainfile_path : str = os.path.join(
+            self.valid_data_dir ,
+            training_pipeline.DATA_VALIDATION_INVALID_DIR,
+            training_pipeline.TRAINING_FILE_NAME
+        )
+        self.data_valid_trainfile_path : str = os.path.join(
+            self.valid_data_dir ,
+            training_pipeline.DATA_VALIDATION_VALID_DIR,
+            training_pipeline.TRAINING_FILE_NAME
+        )
+        self.drift_report_file_path : str = os.path.join(
+            self.data_validation_dir ,
+            training_pipeline.DATA_VALIDATION_DRIFT_REPORT_DIR,
+            training_pipeline.DATA_VALIDATION_DRIFT_FILE
+        )
+
+
+

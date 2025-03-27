@@ -23,7 +23,7 @@ def get_requirement()->list[str]:
 
 # print(get_requirement())
 setup(
-    name="MLOPS_Project",
+    name="URL Validation",
     version="1.0.0",
     author="Aman Kumar Choudhary",
     author_email="amankumarchy5423@gmail.com",

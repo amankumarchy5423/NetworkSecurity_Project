@@ -6,7 +6,8 @@ scikit-learn
 yml
 pymongo
 pymongo[srv]
-
+dill
+ensure
 
 -e .
 

@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 import datetime
 
+
 PIPELINE_NAME = "networksecurity\constant\training_pipeline"
 ARTIFACT_NAME : str = "networksecurity"
 ARTIFACT_DIR : str = "Artifact"
@@ -26,7 +27,15 @@ DATA_TEST_SPLIT : float = 0.2
 
 # NTWORK_DATA_DIR = "network_data"
 
-
+SCHEMA_FILE_PATH = os.path.join('schema','schema.yaml')
+DIFFERENCIATE_COLUMN = os.path.join('schema','categorized.yaml')
 
 # TRAINING_PIPELINR_DIR = "networksecurity\constant\training_pipeline"
 # DATA_INGUSION_PATH = "networksecurity\component\data_ingestion"
+
+DATA_VALIDATION_DIRNAME :str = "DataValidation"
+DATA_VALIDATION_VALID_DIR :str = "Valid"
+DATA_VALIDATION_INVALID_DIR :str ="Invalid"
+DATA_VALIDATION_DRIFT_REPORT_DIR :str = "DriftReport"
+DATA_VALIDATION_DRIFT_FILE : str = "drift.json"
+

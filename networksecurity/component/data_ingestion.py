@@ -10,7 +10,7 @@ from sklearn.model_selection import train_test_split
 from networksecurity.exception.exception import NetworkSecurityException
 from networksecurity.logging.logger import my_logger
 from networksecurity.entity.config_entity import Data_ingustion_config
-from networksecurity.entity.dataengestion_entity import data_engestion_output
+from networksecurity.entity.artifact__entity import data_engestion_output
 
 import certifi
 ca = certifi.where()
@@ -28,7 +28,7 @@ class Data_ingestion_mongo:
             my_logger.error(f"Data ingestion failed. Error: {str(e)}")
             raise NetworkSecurityException(e,sys) 
     
-    def start_datengestion(self):
+    def start_datengestion(self)-> pd.DataFrame:
         try:
             data_base = self.data_config_entity.mongo_database_name
             collection = self.data_config_entity.mongo_collection_name
@@ -56,7 +56,7 @@ class Data_ingestion_mongo:
             my_logger.error(f"Data ingestion failed. Error: {str(e)}")
             raise NetworkSecurityException(e,sys)
         
-    def data_collection_to_feature(self,data : pd.DataFrame):
+    def data_collection_to_feature(self,data : pd.DataFrame)-> None :
         try:
 
             feature_dir_path = self.data_config_entity.feature_store_dir
@@ -79,7 +79,7 @@ class Data_ingestion_mongo:
             my_logger.error(f"Data collection_to_db failed. Error: {str(e)}")
             raise NetworkSecurityException(e,sys)
         
-    def data_train_test_csv(self,feature_collections : pd.DataFrame):
+    def data_train_test_csv(self,feature_collections : pd.DataFrame)->str:
         try:
 
             train_file =self.data_config_entity.data_training
@@ -98,6 +98,7 @@ class Data_ingestion_mongo:
             train.to_csv(train_file,index = False ,header = True)
             test.to_csv(test_file,index = False,header = True)
             my_logger.info("data is converted into train and test file...")
+
 
             return train_file,test_file
 

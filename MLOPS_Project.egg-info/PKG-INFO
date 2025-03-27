@@ -11,6 +11,8 @@ Requires-Dist: scikit-learn
 Requires-Dist: yml
 Requires-Dist: pymongo
 Requires-Dist: pymongo[srv]
+Requires-Dist: dill
+Requires-Dist: ensure
 Dynamic: author
 Dynamic: author-email
 Dynamic: requires-dist
