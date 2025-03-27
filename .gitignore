@@ -2,3 +2,4 @@
 .env
 # MLOPS_Project.egg-info/
 logs/
+.github/
