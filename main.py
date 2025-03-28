@@ -10,6 +10,8 @@ from networksecurity.entity.config_entity import Train_pipeline_config
 from networksecurity.component.data_validation import Data_Validation
 from networksecurity.entity.config_entity import Data_transformation_config
 from networksecurity.component.data_transformation import Data_Transformation
+from networksecurity.entity.config_entity import Model_training_config
+from networksecurity.component.model_train import ModelTrainer
 
 
 if __name__ == "__main__":
@@ -45,6 +47,13 @@ if __name__ == "__main__":
         datatransformation_obj = Data_Transformation(input_artifact = data_validation_output,output_artifact=datatransformation_config_obj)
         data_transformation_output = datatransformation_obj.start_datatransformation()
         my_logger.critical("<==== Data transformation Endss ====>")
+
+        my_logger.critical("<==== model training started =====>")
+        model_training_config_obj = Model_training_config(train_pipeline_obj)
+        model_training_obj = ModelTrainer(model_trainer_config=model_training_config_obj,data_transformation_artifact=data_transformation_output)
+        model_training_output = model_training_obj.initiate_training()
+
+        my_logger.critical("<==== model training ended =====>")
 
         my_logger.info("<<<<< main.py >>>>>>")
         # db = pd.read_csv("data_ingestion/data_ingestion/train.csv")

@@ -9,9 +9,15 @@ PIPELINE_NAME = "networksecurity/constant/training_pipeline"
 ARTIFACT_NAME : str = "networksecurity"
 ARTIFACT_DIR : str = "Artifact"
 FILE_NAME:str = "AmanData.csv"
-TARGET_COLUMN = 'Result'
-TRAINING_FILE_NAME = "train.csv"
-TESTING_FILE_NAME = "test.csv"
+TARGET_COLUMN : str = 'Result'
+TRAINING_FILE_NAME : str = "train.csv"
+TESTING_FILE_NAME :str = "test.csv"
+
+SAVED_MODEL_DIR :str = os.path.join("saved_models")
+MODEL_TRAINED_FILE = "model.pkl"
+PREPROCESSING_FILE = 'preprocessing.pkl'
+
+
 
 
 
@@ -46,5 +52,11 @@ DATA_VALIDATION_DRIFT_FILE : str = "drift.json"
 DATA_TRANSFORMATION_DIR = 'data_transformation'
 DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR = 'transformed_data'
 DATA_TRANSFORMATION_OUTPUT_DIR = 'transformed_object'
+
+
+MODEL_DIR = "model"
+MODEL_TRAINED_DIR = "trained_model"
+MODEL_TRAINED_EXPECTED_SCORE : float = 0.6
+MODEL_TRAINED_OVERFITING_UNDERFITING_THRESOLD :float = 0.05
 
 

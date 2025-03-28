@@ -87,8 +87,15 @@ class Data_transformation_config:
             self.data_transformation_dir , training_pipeline.DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR,(training_pipeline.TESTING_FILE_NAME).replace('csv','npy')
         )
         self.transformed_output_file : str = os.path.join(
-            self.data_transformation_dir , training_pipeline.DATA_TRANSFORMATION_OUTPUT_DIR
+            self.data_transformation_dir , training_pipeline.DATA_TRANSFORMATION_OUTPUT_DIR,training_pipeline.PREPROCESSING_FILE
         )
 
+
+class Model_training_config:
+    def __init__(self,config : Train_pipeline_config):
+        self.model_trained_dir :str =os.path.join(training_pipeline.MODEL_DIR,training_pipeline.MODEL_TRAINED_DIR) 
+        self.model_trained_file :str = os.path.join(self.model_trained_dir,training_pipeline.MODEL_TRAINED_FILE)
+        self.model_min_score :float = training_pipeline.MODEL_TRAINED_EXPECTED_SCORE
+        self.model_underfit : float = training_pipeline.MODEL_TRAINED_OVERFITING_UNDERFITING_THRESOLD
 
 

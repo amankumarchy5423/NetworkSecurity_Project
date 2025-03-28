@@ -4,3 +4,5 @@
 logs/
 .github/
 Artifact/
+final_model/
+model/

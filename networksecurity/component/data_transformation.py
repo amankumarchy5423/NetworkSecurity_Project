@@ -12,7 +12,7 @@ from networksecurity.exception.exception import NetworkSecurityException
 from networksecurity.logging.logger import my_logger
 from networksecurity.entity.artifact__entity import Data_Validation_Artifact,Data_Transformation_Artifact
 from networksecurity.entity.config_entity import Data_transformation_config
-from networksecurity.utils.main_utils.utils import save_ml_model,save_numpy_file,read_yaml_file
+from networksecurity.utils.main_utils.utils import save_ml_model,save_numpy_file,read_yaml_file,load_ml_model
 from networksecurity.constant import training_pipeline
 
 
@@ -84,13 +84,21 @@ class Data_Transformation:
 
             save_numpy_file(test_array,path_1)
             save_numpy_file(data = traian_array,path = self.output_artifact.train_transformed_data)
-            save_numpy_file(data= imputer_object,path = self.output_artifact.transformed_output_file)
+
+            save_ml_model(model= imputer_object, path = self.output_artifact.transformed_output_file)
+
+            my_logger.info(f"{type(imputer_object)}")
+
+            save_ml_model( path ="final_model/preprocessor.pkl", model = imputer_object)
+
+
 
             output  = Data_Transformation_Artifact(
                 transformed_train_file = self.output_artifact.test_transformed_data,
                 transformed_test_file = self.output_artifact.train_transformed_data,
                 transformed_output_file_path = self.output_artifact.transformed_output_file
             )
+            my_logger.info ("all model are saved")
             return output
 
 
