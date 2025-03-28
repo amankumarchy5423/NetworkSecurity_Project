@@ -14,3 +14,9 @@ class Data_Validation_Artifact:
     invalid_trin_file_Path : str
     invalid_test_file_Path : str
     drift_report_file_path : str
+
+@dataclass
+class Data_Transformation_Artifact:
+    transformed_train_file : str
+    transformed_test_file : str
+    transformed_output_file_path : str

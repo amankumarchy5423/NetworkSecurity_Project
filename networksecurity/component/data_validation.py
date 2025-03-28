@@ -148,6 +148,7 @@ class Data_Validation:
                     invalid_test_file_Path  = None,
                     drift_report_file_path  = drift_report_path
             )
+            return data_validation
 
         except Exception as e:
             my_logger.exception(f"initiate_data_validation : {e}")

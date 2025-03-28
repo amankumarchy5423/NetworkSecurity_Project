@@ -77,3 +77,18 @@ class Data_validation_config:
 
 
 
+class Data_transformation_config:
+    def __init__(self,config : Train_pipeline_config):
+        self.data_transformation_dir : str = os.path.join(config.artifact_dir , training_pipeline.DATA_TRANSFORMATION_DIR)
+        self.train_transformed_data : str = os.path.join(
+            self.data_transformation_dir , training_pipeline.DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR,(training_pipeline.TRAINING_FILE_NAME).replace('csv','npy')
+        )
+        self.test_transformed_data : str = os.path.join(
+            self.data_transformation_dir , training_pipeline.DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR,(training_pipeline.TESTING_FILE_NAME).replace('csv','npy')
+        )
+        self.transformed_output_file : str = os.path.join(
+            self.data_transformation_dir , training_pipeline.DATA_TRANSFORMATION_OUTPUT_DIR
+        )
+
+
+

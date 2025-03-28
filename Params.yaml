@@ -1,0 +1,4 @@
+knn_imputer:
+  missing_value : np.nan
+  n_neighbour : 3
+  weights : uniform
