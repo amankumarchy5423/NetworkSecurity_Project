@@ -58,7 +58,8 @@ def validate_url():
 def train_model():
      train_obj = modeltraining_pipeline()
      train_obj.start_model_training()
-     return "model trained successfully "
+     return "model trained successfully completes "
+
 
 
 
