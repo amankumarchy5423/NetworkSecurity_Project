@@ -59,7 +59,10 @@ class Data_Transformation:
 
 
 
+            # my_logger.info(f"knn imputer data shape without drop {train_data.shape}")
             input_train_feature = train_data.drop(columns=training_pipeline.TARGET_COLUMN,axis=1)
+            my_logger.critical(f" data cantain index {input_train_feature.columns}")
+            my_logger.critical(f" data cantain index {input_train_feature.sample(2)}")
             my_logger.info("replacing in output feature -1 to 0 than only (1,0) cantain in output feature for classification problem")
             output_train_feature = (train_data[training_pipeline.TARGET_COLUMN]).replace(-1,0)
 
@@ -67,6 +70,8 @@ class Data_Transformation:
             output_test_feature = (test_data[training_pipeline.TARGET_COLUMN]).replace(-1,0)
 
             knn_imputer : Pipeline = self.data_transform_process()
+
+            my_logger.info(f"knn imputer data shape {input_train_feature.shape}")
 
             imputer_object = knn_imputer.fit(input_train_feature)
             imputed_train_data = knn_imputer.transform(input_train_feature)

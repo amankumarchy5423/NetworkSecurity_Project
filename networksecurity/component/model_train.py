@@ -9,6 +9,9 @@ from networksecurity.utils.ml_utils.metric.classification_metric import get_clas
 from networksecurity.utils.ml_utils.model.estimator import Network_model
 
 
+
+
+
 import mlflow
 import os,sys
 import numpy as np
@@ -23,6 +26,8 @@ from sklearn.ensemble import (
     AdaBoostClassifier,
 )
 
+import dagshub
+dagshub.init(repo_owner='amankumarchy5423', repo_name='NetworkSecurity_Project', mlflow=True)
 
 
 # mlflow.set_tracking_uri(uri='http://127.0.0.1:5000')
@@ -129,6 +134,9 @@ class ModelTrainer:
             Network_model_obj=Network_model(preprocessor = data_preprocessor_pipe,model = best_model)
             save_ml_model(path = self.model_trainer_config.model_trained_file,model=Network_model_obj)
 
+            my_logger.info("saving my model in final_model/model.pkl directory")
+            save_ml_model(path="final_model/best_model.pkl",model=best_model)
+            
             model_train_artifact=Model_Training_Artifact(model_path=self.model_trainer_config.model_trained_file,
                                    train_metric_classification=classification_train_metric ,
                                     test_metric_classification=classification_test_metric )

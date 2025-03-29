@@ -9,6 +9,14 @@ pymongo[srv]
 dill
 ensure
 mlflow
+dagshub
+fastapi
+tldextract
+requests 
+whois 
+python-whois
+googlesearch-python
+
 
 -e .
 

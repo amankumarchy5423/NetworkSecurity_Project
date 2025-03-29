@@ -136,9 +136,9 @@ class Data_Validation:
                 os.makedirs(os.path.dirname(valid_train_file),exist_ok=True)
                 os.makedirs(os.path.dirname(valid_test_file),exist_ok=True)
 
-                train_data.to_csv(valid_train_file)
+                train_data.to_csv(valid_train_file,index = False)
 
-                test_data.to_csv(valid_test_file)
+                test_data.to_csv(valid_test_file, index=False)
             
             data_validation = Data_Validation_Artifact(
                     validation_status = drift_report,

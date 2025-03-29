@@ -9,3 +9,4 @@ pymongo[srv]
 dill
 ensure
 mlflow
+dagshub

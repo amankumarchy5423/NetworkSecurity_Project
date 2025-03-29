@@ -14,6 +14,7 @@ Requires-Dist: pymongo[srv]
 Requires-Dist: dill
 Requires-Dist: ensure
 Requires-Dist: mlflow
+Requires-Dist: dagshub
 Dynamic: author
 Dynamic: author-email
 Dynamic: requires-dist

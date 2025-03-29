@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Validation Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .malicious {
+            color: red;
+            font-weight: bold;
+        }
+        .benign {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>URL Validation Result</h2>
+        <p class="{% if prediction == 'Malicious' %}malicious{% else %}benign{% endif %}">
+            The URL is classified as: <strong>{{ prediction }}</strong>
+        </p>
+        <br>
+        <a href="/">Go Back</a>
+    </div>
+</body>
+</html>
