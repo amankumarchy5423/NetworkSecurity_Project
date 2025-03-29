@@ -8,3 +8,4 @@ pymongo
 pymongo[srv]
 dill
 ensure
+mlflow

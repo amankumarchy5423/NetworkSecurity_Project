@@ -6,3 +6,5 @@ logs/
 Artifact/
 final_model/
 model/
+# URL_Validation.egg-info/
+mlruns/

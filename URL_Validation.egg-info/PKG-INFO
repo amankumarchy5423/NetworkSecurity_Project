@@ -1,5 +1,5 @@
 Metadata-Version: 2.4
-Name: MLOPS_Project
+Name: URL-Validation
 Version: 1.0.0
 Author: Aman Kumar Choudhary
 Author-email: amankumarchy5423@gmail.com
@@ -13,6 +13,7 @@ Requires-Dist: pymongo
 Requires-Dist: pymongo[srv]
 Requires-Dist: dill
 Requires-Dist: ensure
+Requires-Dist: mlflow
 Dynamic: author
 Dynamic: author-email
 Dynamic: requires-dist

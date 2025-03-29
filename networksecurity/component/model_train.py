@@ -9,6 +9,7 @@ from networksecurity.utils.ml_utils.metric.classification_metric import get_clas
 from networksecurity.utils.ml_utils.model.estimator import Network_model
 
 
+import mlflow
 import os,sys
 import numpy as np
 import pandas as pd 
@@ -24,7 +25,10 @@ from sklearn.ensemble import (
 
 
 
+# mlflow.set_tracking_uri(uri='http://127.0.0.1:5000')
+# mlflow.set_experiment(experiment_name="Network Security Experiment")
 
+# mlflow.sklearn.autolog()
 
 class ModelTrainer:
     def __init__(self,
@@ -36,6 +40,21 @@ class ModelTrainer:
         except Exception as e:
             my_logger.error(f"An error occurred: {str(e)}")
             raise NetworkSecurityException(e,sys) 
+    
+    def mlfow_connection(self,best_model,classifier_report):
+        try:
+            with mlflow.start_run():
+                f1 = classifier_report.f1_score
+                precision = classifier_report.precision
+                recall = classifier_report.recall
+
+                mlflow.log_metric(key="f1_score",value=f1)
+                mlflow.log_metric(key="precision",value=precision)
+                mlflow.log_metric(key="recall",value=recall)
+                mlflow.sklearn.log_model(best_model,"best_model")
+        except Exception as e:
+            my_logger.error(f"An error occurred: {str(e)}")
+            raise NetworkSecurityException(e,sys)
         
     def train_model(self,x_train,y_train,x_test,y_test):
         try:
@@ -92,6 +111,10 @@ class ModelTrainer:
 
             y_test_predict = best_model.predict(x_test)
             classification_test_metric = get_classification_report(y_true=y_test,y_predict=y_test_predict)
+            
+            my_logger.info("my best model and matrix is loged in mlflow")
+            self.mlfow_connection(best_model=best_model,classifier_report=classification_train_metric)
+            self.mlfow_connection(best_model=best_model,classifier_report=classification_test_metric)
 
             my_logger.info("now its time for load our model")
             my_logger.info(f"file path where error cause : {self.data_transformation_artifact.transformed_output_file_path}")
