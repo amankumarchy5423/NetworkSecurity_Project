@@ -1,23 +1,24 @@
-name : Network_security
+name: Network_security  
 
-on :
-  push : 
-    branches : 
-     - main
-    path-ignore :
-     - 'Readme.md'
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:  
+      - 'README.md'  
 
-jobs :
-  preprocessed :
-    runs-on : ubuntu-latest
-    steps :
-     - name : Checkout code
-     - uses : actions/checkout@v3
+jobs:
+  preprocessed:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3  
 
-     - name : Lint code
-     - uses : echo "Linting Repo"
+      - name: Lint code
+        run: echo "Linting Repo" 
 
-     - name : Run unit test
-     - uses : echo "Runing unit test"
+      - name: Run unit test
+        run: echo "Running unit test"  
+
 
 
