@@ -43,12 +43,11 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
-      - name: Build & Push Docker Image
+      - name: build docker image,push
         run: |
-         docker buildx build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG . 
-         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-         echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_ENV
-
+         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY : $IMAGE_TAG
+         docker push $ECR_REGISTRY/$ECR_REPOSITORY : $IMAGE_TAG
+         echo ":: set_output name = image :: $ECR_REGISTRY/$ECR_REPOSITORY : $IMAGE_TAG"
 
 
 
