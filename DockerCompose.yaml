@@ -1,0 +1,9 @@
+version: "3"
+services:
+  app:
+    image: b8b0f4d736d8
+    ports:
+      - "8080:8080"
+    environment:
+      - DAGSHUB_USERNAME=amankumarchy5423
+      - DAGSHUB_TOKEN=06ff030bf203ef6af72ea419852b98883469730a

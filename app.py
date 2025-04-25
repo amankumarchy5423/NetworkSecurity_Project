@@ -8,6 +8,17 @@ from networksecurity.logging.logger import my_logger
 from networksecurity.pipeline.training_pipeline import modeltraining_pipeline
 
 import numpy as np
+from dotenv import load_dotenv
+load_dotenv()
+
+import os
+from dagshub import dagshub_logger, init
+
+os.environ['DAGSHUB_USER'] = os.getenv("DAGSHUB_USERNAME")
+os.environ['DAGSHUB_TOKEN'] = os.getenv("DAGSHUB_TOKEN")
+init(repo_owner="amankumarchy5423", repo_name="NetworkSecurity_Project", mlflow=True)
+
+
 
 
 
@@ -65,4 +76,4 @@ def train_model():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host ='0.0.0.0', port=8080)
